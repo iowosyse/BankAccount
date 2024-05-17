@@ -23,22 +23,22 @@ public class BankAccount {
 
     public void deposit(double amount) {
         if (amount < 0)
-            System.out.println("Cannot deposit that amount");
-        else {
-            Transaction depositing = new Transaction(amount);
-            depositing.setType("Deposit");
-            transactions.add(depositing);
-        }
+            throw new IllegalArgumentException("Can't do that");
+
+        Transaction depositing = new Transaction(amount);
+        depositing.setType("Deposit");
+        transactions.add(depositing);
+
     }
 
     public void withdraw(double amount) {
         if (amount < 0 || checkCurrentBalance() - amount < 0)
-            System.out.println("Cannot withdraw that amount");
-        else {
-            Transaction withdrawing = new Transaction(-amount);
-            withdrawing.setType("Withdraw");
-            transactions.add(withdrawing);
-        }
+            throw new IllegalArgumentException("Can't do that");
+
+        Transaction withdrawing = new Transaction(-amount);
+        withdrawing.setType("Withdraw");
+        transactions.add(withdrawing);
+
     }
 
     public void cutOffDate() {

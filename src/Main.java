@@ -3,7 +3,7 @@ import Bank.Transaction;
 
 public class Main {
     public static void main(String[] args) {
-        CreditCard account = new CreditCard();
+        CreditCard account = new CreditCard(25_000);
 
         account.deposit(400);
         account.withdraw(200);
@@ -35,6 +35,13 @@ public class Main {
                 transaction.setAmount(transaction.getAmount() * -1);
         }
 
-        account.withdraw(20_000);
+        try {
+            System.out.println("Try to withdraw $20,000"); //credit limit is 25,000
+            account.withdraw(20_000);
+        } catch (IllegalArgumentException e) {
+            System.out.println("Catch clause.");
+        } finally {
+            System.out.println("If entered the catch clause the credit limit was exceeded. If not it means everything is good.");
+        }
     }
 }

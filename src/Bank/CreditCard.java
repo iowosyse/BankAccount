@@ -1,16 +1,19 @@
 package Bank;
 
 public class CreditCard extends BankAccount{
-    private final double creditLimit = 25000;
+    private double creditLimit;
+
+    public CreditCard(double creditLimit) {
+        this.creditLimit = creditLimit;
+    }
 
     @Override
     public void withdraw(double amount){
         if (checkCurrentBalance() - amount < (creditLimit * -1))
-            System.out.println("Cannot withdraw that amount");
-        else {
-            Transaction withdrawing = new Transaction(-amount);
-            withdrawing.setType("Withdraw");
-            transactions.add(withdrawing);
-        }
+            throw new IllegalArgumentException("Can't do that");
+
+        Transaction withdrawing = new Transaction(-amount);
+        withdrawing.setType("Withdraw");
+        transactions.add(withdrawing);
     }
 }
