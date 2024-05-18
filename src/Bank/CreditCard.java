@@ -1,5 +1,7 @@
 package Bank;
 
+import AuxExceptions.InsufficientFundsException;
+
 public class CreditCard extends BankAccount{
     private double creditLimit;
 
@@ -10,7 +12,7 @@ public class CreditCard extends BankAccount{
     @Override
     public void withdraw(double amount){
         if (checkCurrentBalance() - amount < (creditLimit * -1))
-            throw new IllegalArgumentException("Can't do that");
+            throw new InsufficientFundsException("Can't let you go broke lol");
 
         Transaction withdrawing = new Transaction(-amount);
         withdrawing.setType("Withdraw");
