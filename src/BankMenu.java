@@ -72,22 +72,21 @@ class MenuItem implements iMenuItem{
 
     @Override
     public void execute() {
-        if (text.equals("Show Transactions"))
-            acc.showTransactions();
-        else if (text.equals("Cutoff date"))
-            acc.cutOffDate();
-        else if (text.equals("Get balance"))
-            System.out.println("Your balance is: " + acc.checkCurrentBalance());
-        else {
-            int amount;
+        switch (text) {
+            case "Show Transactions" -> acc.showTransactions();
+            case "Cutoff date" -> acc.cutOffDate();
+            case "Get balance" -> System.out.println("Your balance is: " + acc.checkCurrentBalance());
+            default -> {
+                int amount;
 
-            System.out.print("Enter the amount: ");
-            amount = sc.nextInt();
-            sc.nextLine();
-            if (text.equals("Deposit"))
-                acc.deposit(amount);
-            else
-                acc.withdraw(amount);
+                System.out.print("Enter the amount: ");
+                amount = sc.nextInt();
+                sc.nextLine();
+                if (text.equals("Deposit"))
+                    acc.deposit(amount);
+                else
+                    acc.withdraw(amount);
+            }
         }
 
         System.out.println("Success!");
