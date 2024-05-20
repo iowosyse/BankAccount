@@ -6,7 +6,6 @@ import java.util.Scanner;
 public class BankMenu {
     public static HashMap<Integer, MenuItem> menu = new HashMap<>();
 
-
     public static void setMenu() {
         MenuItem deposit = new MenuItem("Deposit", Main.account);
         MenuItem withdraw = new MenuItem("Withdraw", Main.account);
@@ -19,7 +18,6 @@ public class BankMenu {
         menu.put(3, getBalance);
         menu.put(4, cutoffDate);
         menu.put(5, showTransactions);
-
     }
 
     public static void display() {
