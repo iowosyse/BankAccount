@@ -36,7 +36,7 @@ public class BankAccount {
 
     public void withdraw(double amount) {
         if (amount < 0)
-            throw new IllegalArgumentException("Can't do that");
+            throw new NoNegativeOperationException("Can't do that");
 
         if ( checkCurrentBalance() - amount < 0)
             throw new InsufficientFundsException("Can't let you go broke lol");
